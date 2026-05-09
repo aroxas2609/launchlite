@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Prestons Run Club placeholder</title>
+  <defs>
+    <linearGradient id="bg1" x1="120" y1="80" x2="1080" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF3FF"/>
+      <stop offset="1" stop-color="#D9E6FF"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="760" y1="520" x2="1040" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3D7EEA" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2F63C4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg1)"/>
+  <rect width="1200" height="750" fill="url(#accent1)"/>
+  <circle cx="180" cy="160" r="70" fill="#FFFFFF" opacity="0.85"/>
+  <text x="80" y="640" fill="#1B2230" opacity="0.55" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="52" font-weight="700">
+    Prestons Run Club
+  </text>
+  <!-- TODO: Replace this file with a real screenshot (export PNG/WebP if you prefer) -->
+</svg>

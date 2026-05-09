@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 52" fill="none" role="img" aria-labelledby="ttl">
+  <title id="ttl">LaunchLite Studio wordmark  dark backgrounds</title>
+  <path d="M6 43C13 29 34 21 43 13" stroke="#3b82f6" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/>
+  <path d="M10 43V16H29" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M41 43V21H61" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="76" y="36" fill="#f8fafc" font-family="Sora,Plus Jakarta Sans,system-ui,sans-serif" font-size="28" font-weight="600">
+    LaunchLite<tspan dx="12" fill="#cbd5f5" font-weight="500">Studio</tspan>
+  </text>
+</svg>

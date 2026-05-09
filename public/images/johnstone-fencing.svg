@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Johnstone Fencing placeholder</title>
+  <defs>
+    <linearGradient id="bg2" x1="260" y1="60" x2="980" y2="690" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EDF4FF"/>
+    </linearGradient>
+    <linearGradient id="fence" x1="80" y1="620" x2="1120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22304D" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#3D7EEA" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg2)"/>
+  <rect width="1200" height="750" fill="url(#fence)"/>
+  <rect x="90" y="420" width="1020" height="16" rx="8" fill="#22304D" opacity="0.08"/>
+  <rect x="90" y="450" width="1020" height="16" rx="8" fill="#22304D" opacity="0.06"/>
+  <rect x="90" y="480" width="1020" height="16" rx="8" fill="#22304D" opacity="0.04"/>
+  <text x="80" y="640" fill="#1B2230" opacity="0.55" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="52" font-weight="700">
+    Johnstone Fencing
+  </text>
+  <!-- TODO: Replace this file with a branded project screenshot -->
+</svg>

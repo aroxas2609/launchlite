@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Apex Studios placeholder</title>
+  <defs>
+    <linearGradient id="bg3" x1="140" y1="700" x2="1060" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#1F3B8D" stop-opacity="0.35"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 170) rotate(90) scale(320)">
+      <stop stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg3)"/>
+  <rect width="1200" height="750" fill="url(#glass)"/>
+  <text x="80" y="640" fill="#FFFFFF" opacity="0.92" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="54" font-weight="700">
+    Apex Studios
+  </text>
+  <text x="80" y="690" fill="#FFFFFF" opacity="0.70" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="26" font-weight="500">
+    Photography preview
+  </text>
+  <!-- TODO: Swap for your real Apex Studios visuals -->
+</svg>

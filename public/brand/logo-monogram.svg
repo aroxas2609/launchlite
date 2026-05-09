@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-labelledby="m">
+  <title id="m">LaunchLite Studio LL monogram</title>
+  <rect width="96" height="96" rx="26" fill="#faf7f2"/>
+  <path d="M17 73C34 43 71 34 85 26" stroke="#7c9ab0" stroke-opacity="0.65" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M25 73V38H53" stroke="#0b0f14" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M71 73V44H87" stroke="#0b0f14" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Larger monogram badge for watermark / IG profile export -->
+</svg>
