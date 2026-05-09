@@ -2,18 +2,21 @@
  * ---------------------------------------------------------------------------
  * BRAND SETTINGS — edit here first
  * ---------------------------------------------------------------------------
- * TODO: Replace "LaunchLite Studio" with your final business name.
- * Hint: Search the codebase for LaunchLite Studio if you rename later.
  */
 
 export const BUSINESS_NAME = "LaunchLite Studio";
 
-/** TODO: Set your deployed site URL for Open Graph / canonical links */
+/**
+ * Canonical site URL (Open Graph, metadata).
+ * Override in production: NEXT_PUBLIC_SITE_URL=https://launchlitestudio.com
+ */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://launchlite-studio.example";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://launchlitestudio.com";
 
-/** TODO: Replace with your public contact email */
-export const CONTACT_EMAIL = "hello@launchlitestudio.example";
+/**
+ * Do not put your private inbox here — it would appear in the client bundle if imported in client components.
+ * Quote notifications use server-only env CONTACT_FORM_RECIPIENT (see .env.example).
+ */
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },

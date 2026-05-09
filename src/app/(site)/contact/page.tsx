@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
-import { CONTACT_EMAIL, SITE_URL } from "@/config/site";
+import { SITE_URL } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,27 +20,22 @@ export default function ContactPage() {
             title="Request a thoughtful quote—not a generic ticket."
             description="Tell me what you need and I’ll help work out the simplest, most affordable option."
           />
-          {/* TODO: Update email + domain in src/config/site.ts */}
-          <ul className="mt-10 space-y-4 text-sm text-charcoal/70">
+          <ul className="mt-10 space-y-4 text-sm text-slate">
             <li>
-              <span className="font-semibold text-charcoal">Email</span>
+              <span className="font-semibold text-midnight">Website</span>
               <br />
               <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="text-accent underline-offset-4 hover:underline"
+                href={SITE_URL}
+                className="text-accent-strong underline-offset-4 hover:underline"
               >
-                {CONTACT_EMAIL}
+                {SITE_URL.replace(/^https?:\/\//, "")}
               </a>
             </li>
-            <li>
-              <span className="font-semibold text-charcoal">Website</span>
-              <br />
-              <span className="break-all">{SITE_URL}</span>
-            </li>
           </ul>
-          <p className="mt-10 rounded-2xl border border-charcoal/8 bg-white p-5 text-sm leading-relaxed text-charcoal/65 shadow-card">
-            I usually reply within two business days. If your request is urgent,
-            mention timing in your message—I will be honest about availability.
+          <p className="mt-10 rounded-2xl border border-line bg-white p-5 text-sm leading-relaxed text-slate shadow-card">
+            Use the form — I usually reply within two business days. If your
+            request is urgent, mention timing in your message and I will be
+            honest about availability.
           </p>
         </div>
 

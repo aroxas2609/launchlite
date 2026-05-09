@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { POSITIONING_ONE_LINER } from "@/config/brand";
-import {
-  BUSINESS_NAME,
-  CONTACT_EMAIL,
-  NAV_LINKS,
-  SITE_URL,
-} from "@/config/site";
+import { BUSINESS_NAME, NAV_LINKS, SITE_URL } from "@/config/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -22,13 +17,13 @@ export function Footer() {
               fundamentals—without sounding like a jargon factory.
             </p>
             <p className="mt-4 text-sm text-snow/75">
-              {/* TODO: Update email in src/config/site.ts */}
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
+              <Link
+                href="/contact"
                 className="font-medium text-snow underline-offset-4 hover:underline"
               >
-                {CONTACT_EMAIL}
-              </a>
+                Request a quote
+              </Link>
+              <span className="text-snow/50"> — no cold call, just your brief.</span>
             </p>
           </div>
           <div className="md:col-span-3">
@@ -50,10 +45,7 @@ export function Footer() {
               clear scope. If you need something bigger, I will point you to
               the right specialist.
             </p>
-            <p className="mt-4 text-xs text-snow/45">
-              {/* TODO: Swap domain in src/config/site.ts */}
-              {SITE_URL}
-            </p>
+            <p className="mt-4 text-xs text-snow/45">{SITE_URL}</p>
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-snow/45 sm:flex-row sm:items-center sm:justify-between">

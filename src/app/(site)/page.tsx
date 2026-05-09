@@ -13,7 +13,6 @@ import { siteFaq } from "@/config/faq";
 import { portfolioProjects } from "@/config/portfolio";
 import { pricingDisclaimer, pricingTiers } from "@/config/pricing";
 import { simpleProcessSteps } from "@/config/process";
-import { CONTACT_EMAIL } from "@/config/site";
 import { services } from "@/config/services";
 
 const whyPoints = [
@@ -184,15 +183,8 @@ export default function HomePage() {
               description="Tell me what you need and I will help work out the simplest, most affordable option."
             />
             <p className="mt-6 text-sm leading-relaxed text-slate">
-              Prefer email directly? Reach me at{" "}
-              {/* TODO: Update CONTACT_EMAIL in src/config/site.ts */}
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="font-medium text-accent-strong underline-offset-4 hover:underline"
-              >
-                {CONTACT_EMAIL}
-              </a>
-              .
+              Submit the form — I will reply by email. No address published here
+              on purpose; your details stay between us and the inquiry.
             </p>
           </div>
           <ContactForm />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 const websiteTypes = [
   "Small business website",
@@ -21,24 +21,76 @@ const budgetRanges = [
 ] as const;
 
 const fieldClasses =
-  "rounded-xl border border-line bg-white px-3 py-2.5 text-sm text-midnight shadow-inner outline-none ring-accent/0 transition focus:border-accent/40 focus:ring-4 focus:ring-accent/15";
+  "rounded-xl border border-line bg-white px-3 py-2.5 text-sm text-midnight shadow-inner outline-none ring-accent/0 transition focus:border-accent/40 focus:ring-4 focus:ring-accent/15 disabled:opacity-60";
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const form = e.currentTarget;
+    const body = new FormData(form);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body,
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+      };
+
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMessage(
+          data.error ?? "Something went wrong. Please try again."
+        );
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+      setErrorMessage("Could not reach the server. Check your connection.");
+    }
+  }
 
   return (
     <form
       className="grid gap-5 rounded-2xl border border-line bg-white p-6 shadow-card sm:p-8"
-      onSubmit={(e) => {
-        e.preventDefault();
-        // TODO: Connect form to email or provider (see src/config/site.ts CONTACT_EMAIL too)
-        setSubmitted(true);
-      }}
+      onSubmit={handleSubmit}
     >
-      {submitted ? (
+      {/* Honeypot — leave blank */}
+      <div className="sr-only" aria-hidden>
+        <label htmlFor="company_website">Leave blank</label>
+        <input
+          id="company_website"
+          type="text"
+          name="company_website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
+      {status === "success" ? (
         <p className="rounded-xl bg-soft-blue p-4 text-sm text-slate">
-          Thanks — your details are captured locally for now. Next step: hook
-          this form to mail or Formspree (see TODO inside this file).
+          Thanks — your quote request was sent. I will reply by email as soon
+          as I can.
+        </p>
+      ) : null}
+
+      {status === "success" ? null : (
+        <>
+      {status === "error" ? (
+        <p className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+          {errorMessage}
         </p>
       ) : null}
 
@@ -48,6 +100,7 @@ export function ContactForm() {
           <input
             name="name"
             required
+            disabled={status === "submitting"}
             className={fieldClasses}
             autoComplete="name"
           />
@@ -56,6 +109,7 @@ export function ContactForm() {
           Business name
           <input
             name="business"
+            disabled={status === "submitting"}
             className={fieldClasses}
             autoComplete="organization"
           />
@@ -69,6 +123,7 @@ export function ContactForm() {
             name="email"
             type="email"
             required
+            disabled={status === "submitting"}
             className={fieldClasses}
             autoComplete="email"
           />
@@ -78,6 +133,7 @@ export function ContactForm() {
           <input
             name="phone"
             type="tel"
+            disabled={status === "submitting"}
             className={fieldClasses}
             autoComplete="tel"
           />
@@ -89,6 +145,7 @@ export function ContactForm() {
         <select
           name="websiteType"
           required
+          disabled={status === "submitting"}
           className={fieldClasses}
           defaultValue=""
         >
@@ -108,6 +165,7 @@ export function ContactForm() {
           Budget range
           <select
             name="budget"
+            disabled={status === "submitting"}
             className={fieldClasses}
             defaultValue=""
           >
@@ -125,13 +183,31 @@ export function ContactForm() {
           <legend className="mb-1">Do you already have a domain?</legend>
           <div className="flex flex-wrap gap-3 text-sm font-normal text-slate">
             <label className="inline-flex items-center gap-2">
-              <input type="radio" name="domain" value="yes" /> Yes
+              <input
+                type="radio"
+                name="domain"
+                value="yes"
+                disabled={status === "submitting"}
+              />{" "}
+              Yes
             </label>
             <label className="inline-flex items-center gap-2">
-              <input type="radio" name="domain" value="no" /> No
+              <input
+                type="radio"
+                name="domain"
+                value="no"
+                disabled={status === "submitting"}
+              />{" "}
+              No
             </label>
             <label className="inline-flex items-center gap-2">
-              <input type="radio" name="domain" value="unsure" /> Not sure
+              <input
+                type="radio"
+                name="domain"
+                value="unsure"
+                disabled={status === "submitting"}
+              />{" "}
+              Not sure
             </label>
           </div>
         </fieldset>
@@ -141,13 +217,31 @@ export function ContactForm() {
         <legend className="mb-1">Do you already have content/photos?</legend>
         <div className="flex flex-wrap gap-3 text-sm font-normal text-slate">
           <label className="inline-flex items-center gap-2">
-            <input type="radio" name="content" value="ready" /> Mostly ready
+            <input
+              type="radio"
+              name="content"
+              value="ready"
+              disabled={status === "submitting"}
+            />{" "}
+            Mostly ready
           </label>
           <label className="inline-flex items-center gap-2">
-            <input type="radio" name="content" value="partial" /> Partially
+            <input
+              type="radio"
+              name="content"
+              value="partial"
+              disabled={status === "submitting"}
+            />{" "}
+            Partially
           </label>
           <label className="inline-flex items-center gap-2">
-            <input type="radio" name="content" value="help" /> I need guidance
+            <input
+              type="radio"
+              name="content"
+              value="help"
+              disabled={status === "submitting"}
+            />{" "}
+            I need guidance
           </label>
         </div>
       </fieldset>
@@ -158,6 +252,7 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          disabled={status === "submitting"}
           className={fieldClasses}
           placeholder="Tell me about your business, timeline, and anything you have in mind."
         />
@@ -165,10 +260,13 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft ring-offset-snow transition hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+        disabled={status === "submitting"}
+        className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft ring-offset-snow transition hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
       >
-        Send quote request
+        {status === "submitting" ? "Sending…" : "Send quote request"}
       </button>
+        </>
+      )}
     </form>
   );
 }
