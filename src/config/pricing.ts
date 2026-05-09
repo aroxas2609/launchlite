@@ -2,7 +2,7 @@
  * ---------------------------------------------------------------------------
  * PRICING — edit tiers, prices & bullet lists here (single source of truth)
  * ---------------------------------------------------------------------------
- * TODO: Update dollar amounts and inclusions as your packages change.
+ * Amounts are Australian dollars (AUD). TODO: adjust tiers as packages change.
  */
 
 export type PricingTier = {
@@ -20,7 +20,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "starter",
     name: "Starter Website",
-    priceLabel: "From $499",
+    priceLabel: "From $599",
     description: "Best for one-page websites.",
     features: [
       "1 page website",
@@ -36,7 +36,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "business",
     name: "Business Website",
-    priceLabel: "From $899",
+    priceLabel: "From $999",
     description: "Best for small businesses that need multiple pages.",
     features: [
       "Up to 5 pages",
@@ -55,7 +55,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "premium",
     name: "Premium Website",
-    priceLabel: "From $1,499",
+    priceLabel: "From $1,699",
     description:
       "Best for polished custom websites with more sections and stronger branding.",
     features: [
@@ -74,7 +74,7 @@ export const pricingTiers: PricingTier[] = [
 ];
 
 export const pricingDisclaimer =
-  "Prices are starting points and may vary depending on features, content and integrations.";
+  "All amounts are in Australian dollars (AUD). Prices are starting points and may vary depending on features, content and integrations.";
 
 export type SupportPlan = {
   title: string;

@@ -11,6 +11,11 @@ export type FAQItem = {
 
 export const siteFaq: FAQItem[] = [
   {
+    question: "Where are you based, and what currency do you use?",
+    answer:
+      "LaunchLite Studio is based in Australia. Package prices and quotes are in Australian dollars (AUD).",
+  },
+  {
     question: "Do I need to provide photos and text?",
     answer:
       "Yes—your words and images are what make the site feel like you. If you are not sure where to start, I can guide you with a simple content checklist and practical photo tips (phone photos can work with the right layout).",

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { POSITIONING_ONE_LINER } from "@/config/brand";
-import { BUSINESS_NAME, NAV_LINKS, SITE_URL } from "@/config/site";
+import {
+  BUSINESS_NAME,
+  BUSINESS_REGION_NOTE,
+  NAV_LINKS,
+  SITE_URL,
+} from "@/config/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -24,6 +29,7 @@ export function Footer() {
                 Request a quote
               </Link>
             </p>
+            <p className="mt-3 text-xs text-snow/55">{BUSINESS_REGION_NOTE}</p>
           </div>
           <div className="md:col-span-3">
             <p className="text-sm font-semibold text-snow">Navigate</p>

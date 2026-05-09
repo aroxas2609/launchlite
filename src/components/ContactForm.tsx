@@ -13,10 +13,10 @@ const websiteTypes = [
 ] as const;
 
 const budgetRanges = [
-  "Under $750",
-  "$750 – $1,500",
-  "$1,500 – $3,000",
-  "$3,000+",
+  "Under $900",
+  "$900 – $2,000",
+  "$2,000 – $5,000",
+  "$5,000+",
   "Prefer guidance",
 ] as const;
 
@@ -162,7 +162,7 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-medium text-midnight">
-          Budget range
+          Budget range (AUD)
           <select
             name="budget"
             disabled={status === "submitting"}

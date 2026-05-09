@@ -9,7 +9,7 @@ import { siteFaq } from "@/config/faq";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Straightforward pricing for small businesses, clubs, creatives, and local services—with optional ongoing support.",
+    "Straightforward AUD pricing for Australian small businesses, clubs, creatives, and local services—with optional ongoing support.",
 };
 
 export default function PricingPage() {

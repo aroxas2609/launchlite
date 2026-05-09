@@ -26,8 +26,9 @@ export function PricingCard({ tier }: Props) {
       <h3 className="mt-3 font-heading text-xl font-semibold text-midnight">
         {tier.name}
       </h3>
-      <p className="mt-2 text-3xl font-semibold tracking-tight text-midnight">
-        {tier.priceLabel}
+      <p className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold tracking-tight text-midnight">
+        <span>{tier.priceLabel}</span>
+        <span className="text-xl font-semibold tracking-normal text-slate">AUD</span>
       </p>
       <p className="mt-2 text-sm leading-relaxed text-slate">{tier.description}</p>
       <ul className="mt-6 space-y-3 text-sm text-midnight/85">

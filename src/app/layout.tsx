@@ -18,7 +18,7 @@ const interBody = Inter({
 /** TODO (SEO): keep in sync when you change tagline or positioning */
 const pageTitle = `${BUSINESS_NAME} | Affordable Websites for Small Businesses`;
 const pageDescription =
-  "Affordable, professional websites for small businesses, tradies, local clubs, photographers and community groups.";
+  "Australia-based boutique studio: affordable, professional websites for small businesses, tradies, local clubs, photographers and community groups. Pricing in AUD.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

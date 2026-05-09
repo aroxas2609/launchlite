@@ -6,6 +6,10 @@
 
 export const BUSINESS_NAME = "LaunchLite Studio";
 
+/** Short line for footer / trust — Australia + currency context */
+export const BUSINESS_REGION_NOTE =
+  "Australia-based studio · Prices shown in AUD";
+
 /**
  * Canonical site URL (Open Graph, metadata).
  * Override in production: NEXT_PUBLIC_SITE_URL=https://launchlitestudio.com

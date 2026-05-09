@@ -31,7 +31,7 @@ export default function HomePage() {
     <>
       <HeroSection
         title={MAIN_TAGLINE}
-        subtitle="LaunchLite Studio builds clean, modern websites for tradies, local businesses, clubs and creators—straightforward scope, realistic timelines, and premium polish without the big-agency invoice."
+        subtitle="LaunchLite Studio is Australia-based and builds clean, modern websites for tradies, local businesses, clubs and creators—straightforward scope, realistic timelines, and premium polish without the big-agency invoice."
       />
 
       <TaglineRibbon />

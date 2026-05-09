@@ -15,7 +15,7 @@ export const MAIN_TAGLINE =
 
 /** Hero eyebrow — avoid repeating “agency price tag” (that phrase lives once in body copy). */
 export const HERO_EYEBROW =
-  "Boutique studio · Modern polish · Plain-English delivery";
+  "Australia · Boutique studio · Modern polish · Plain-English delivery";
 
 /** Footer / meta — one clear positioning line (avoid stacking next to hero eyebrow on same screen) */
 export const POSITIONING_ONE_LINER =
