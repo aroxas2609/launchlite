@@ -55,7 +55,7 @@ export default function RootLayout({
       lang="en"
       className={`${soraDisplay.variable} ${interBody.variable} h-full scroll-smooth`}
     >
-      <body className="flex min-h-full flex-col bg-snow text-midnight antialiased">
+      <body className="flex min-h-dvh flex-col bg-snow text-midnight antialiased">
         {children}
       </body>
     </html>
