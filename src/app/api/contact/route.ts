@@ -35,12 +35,10 @@ export async function POST(request: Request) {
   const apiKey =
     process.env.LAUNCHLITE_RESEND_API_KEY?.trim() ||
     process.env.RESEND_API_KEY?.trim();
-  const missing: string[] = [];
-  if (!apiKey) {
-    missing.push("LAUNCHLITE_RESEND_API_KEY or RESEND_API_KEY");
-  }
-  if (!recipient) missing.push("CONTACT_FORM_RECIPIENT");
-  if (missing.length > 0) {
+  if (!apiKey || !recipient) {
+    const missing: string[] = [];
+    if (!apiKey) missing.push("LAUNCHLITE_RESEND_API_KEY or RESEND_API_KEY");
+    if (!recipient) missing.push("CONTACT_FORM_RECIPIENT");
     return NextResponse.json(
       {
         error:
@@ -130,14 +128,32 @@ export async function POST(request: Request) {
         ? (error as { message: string }).message
         : JSON.stringify(error);
 
-    /** Helpful in local dev; omitted wording on production errors */
+    /** Helpful in local dev; production gets safe hints (check Vercel logs for full Resend message). */
     const isDev = process.env.NODE_ENV === "development";
+
+    const prodHint = (() => {
+      const lower = resendMsg.toLowerCase();
+      if (
+        lower.includes("domain") &&
+        (lower.includes("verif") ||
+          lower.includes("not verified") ||
+          lower.includes("dns"))
+      ) {
+        return "Message could not be sent — the sender domain may not be verified in Resend yet.";
+      }
+      if (
+        lower.includes("only send") ||
+        lower.includes("testing email") ||
+        lower.includes("verify a domain")
+      ) {
+        return "Message could not be sent — Resend may be in test mode or the recipient is not allowed.";
+      }
+      return "Could not send message. Please try again shortly.";
+    })();
 
     return NextResponse.json(
       {
-        error: isDev
-          ? `Send failed: ${resendMsg}`
-          : "Could not send message. Please try again shortly.",
+        error: isDev ? `Send failed: ${resendMsg}` : prodHint,
         ...(isDev ? { debug: resendMsg } : {}),
       },
       { status: 502 }
