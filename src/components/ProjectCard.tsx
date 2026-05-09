@@ -32,15 +32,12 @@ export function ProjectCard({ project }: Props) {
           {project.shortDescription}
         </p>
         <div className="mt-6 flex flex-1 flex-col gap-2">
-          {/* TODO: Update liveUrl, caseStudyUrl, githubUrl in src/config/portfolio.ts */}
+          {/* TODO: Update liveUrl, caseStudyUrl in src/config/portfolio.ts */}
           <ButtonLink href={project.liveUrl} external variant="primary">
             View Live Site
           </ButtonLink>
           <ButtonLink href={project.caseStudyUrl} variant="secondary">
             View Case Study
-          </ButtonLink>
-          <ButtonLink href={project.githubUrl} external variant="outline">
-            View GitHub Repo
           </ButtonLink>
         </div>
       </div>

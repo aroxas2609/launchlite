@@ -4,7 +4,7 @@
  * ---------------------------------------------------------------------------
  * Images: PNG files in `public/images/` (manual or `npm run screenshots`).
  * If the site still shows old art: stop dev, delete `.next`, restart `npm run dev`.
- * TODO: Replace githubUrl + caseStudyUrl when ready
+ * TODO: Replace caseStudyUrl when ready
  */
 
 export type PortfolioProject = {
@@ -17,7 +17,6 @@ export type PortfolioProject = {
   liveUrl: string;
   /** “Case study” link — can point to an anchor on /work or a future blog post */
   caseStudyUrl: string;
-  githubUrl: string;
   overview: string;
   goal: string;
   features: string[];
@@ -35,8 +34,6 @@ export const portfolioProjects: PortfolioProject[] = [
     placeholderImage: "/images/prestons-run-club.png",
     liveUrl: "https://prestonsrun.club",
     caseStudyUrl: "/work#prestons-run-club",
-    // TODO: Replace with your GitHub repository URL
-    githubUrl: "https://github.com/example/prestons-run-club",
     overview:
       "A straightforward club site designed to help new runners find sessions, understand what to expect, and sign up without friction.",
     goal:
@@ -61,7 +58,6 @@ export const portfolioProjects: PortfolioProject[] = [
     placeholderImage: "/images/johnstone-fencing.png",
     liveUrl: "https://johnstonecivil.vercel.app",
     caseStudyUrl: "/work#johnstone-fencing",
-    githubUrl: "https://github.com/example/johnstone-fencing",
     overview:
       "A practical service website structured around core offerings, credibility signals, and a simple enquiry path.",
     goal:
@@ -86,7 +82,6 @@ export const portfolioProjects: PortfolioProject[] = [
     placeholderImage: "/images/apex-studios.png",
     liveUrl: "https://apexstudios-au.vercel.app",
     caseStudyUrl: "/work#apex-studios",
-    githubUrl: "https://github.com/example/apex-studios",
     overview:
       "A polished portfolio-forward concept with curated galleries and premium typography—built to feel upscale without being flashy.",
     goal:

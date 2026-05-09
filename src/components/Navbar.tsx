@@ -34,7 +34,6 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Outline CTA so hero keeps the primary “Get a Quote” pair */}
         <div className="hidden md:block">
           <Link
             href="/contact"

@@ -18,7 +18,7 @@ export default function WorkPage() {
           as="h1"
           eyebrow="Portfolio"
           title="Work that looks premium—without the premium theatre."
-          description="Each build is shaped around trust, clarity, and a mobile-friendly experience. Live links and GitHub are set in src/config/portfolio.ts."
+          description="Each build is shaped around trust, clarity, and a mobile-friendly experience. Live links and copy are set in src/config/portfolio.ts."
         />
       </section>
 
@@ -91,14 +91,6 @@ export default function WorkPage() {
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <ButtonLink href={project.liveUrl} external className="px-6 py-3">
                   View Live Site
-                </ButtonLink>
-                <ButtonLink
-                  href={project.githubUrl}
-                  external
-                  variant="secondary"
-                  className="px-6 py-3"
-                >
-                  View GitHub repo
                 </ButtonLink>
               </div>
             </div>
