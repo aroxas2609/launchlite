@@ -17,6 +17,10 @@ export const BUSINESS_REGION_NOTE =
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://launchlitestudio.com";
 
+/** Maps/reviews link — paste from GBP “Share” if set (NEXT_PUBLIC_GOOGLE_BUSINESS_URL). */
+export const GOOGLE_BUSINESS_PROFILE_URL =
+  process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL?.trim() ?? "";
+
 /**
  * Public contact address — shown on the Contact page. Should match your DNS
  * forwarding (e.g. contact@ → personal inbox). Form delivery still uses

@@ -4,6 +4,7 @@ import { POSITIONING_ONE_LINER } from "@/config/brand";
 import {
   BUSINESS_NAME,
   BUSINESS_REGION_NOTE,
+  GOOGLE_BUSINESS_PROFILE_URL,
   NAV_LINKS,
   PUBLIC_CONTACT_EMAIL,
   SITE_URL,
@@ -36,6 +37,19 @@ export function Footer() {
               >
                 {PUBLIC_CONTACT_EMAIL}
               </a>
+              {GOOGLE_BUSINESS_PROFILE_URL ? (
+                <>
+                  <span className="text-snow/50"> · </span>
+                  <a
+                    href={GOOGLE_BUSINESS_PROFILE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-snow underline-offset-4 hover:underline"
+                  >
+                    Google Business
+                  </a>
+                </>
+              ) : null}
             </p>
             <p className="mt-3 text-xs text-snow/55">{BUSINESS_REGION_NOTE}</p>
           </div>

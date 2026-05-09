@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
-import { PUBLIC_CONTACT_EMAIL, SITE_URL } from "@/config/site";
+import {
+  GOOGLE_BUSINESS_PROFILE_URL,
+  PUBLIC_CONTACT_EMAIL,
+  SITE_URL,
+} from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -41,6 +45,22 @@ export default function ContactPage() {
                 {PUBLIC_CONTACT_EMAIL}
               </a>
             </li>
+            {GOOGLE_BUSINESS_PROFILE_URL ? (
+              <li>
+                <span className="font-semibold text-midnight">
+                  Google Business
+                </span>
+                <br />
+                <a
+                  href={GOOGLE_BUSINESS_PROFILE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-strong underline-offset-4 hover:underline"
+                >
+                  Reviews & listing
+                </a>
+              </li>
+            ) : null}
           </ul>
           <p className="mt-10 rounded-2xl border border-line bg-white p-5 text-sm leading-relaxed text-slate shadow-card">
             I usually reply within two business days. If timing matters—say you
