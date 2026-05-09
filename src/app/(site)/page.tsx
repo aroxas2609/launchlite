@@ -7,7 +7,6 @@ import { ProcessStep } from "@/components/ProcessStep";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
-import { TaglineRibbon } from "@/components/TaglineRibbon";
 import { MAIN_TAGLINE } from "@/config/brand";
 import { siteFaq } from "@/config/faq";
 import { portfolioProjects } from "@/config/portfolio";
@@ -33,8 +32,6 @@ export default function HomePage() {
         title={MAIN_TAGLINE}
         subtitle="LaunchLite Studio is Australia-based and builds clean, modern websites for tradies, local businesses, clubs and creators—straightforward scope, realistic timelines, and premium polish without the big-agency invoice."
       />
-
-      <TaglineRibbon />
 
       <section
         id="services"

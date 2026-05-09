@@ -20,11 +20,3 @@ export const HERO_EYEBROW =
 /** Footer / meta — one clear positioning line (avoid stacking next to hero eyebrow on same screen) */
 export const POSITIONING_ONE_LINER =
   "Premium-looking websites without the big agency price tag.";
-
-/** Rotate these in the ribbon — keep short; max ~4 to avoid clutter */
-export const BRAND_TAGLINES = [
-  "Clean websites. Professional results.",
-  "Modern sites for local businesses",
-  "Websites made simple",
-  "Launch your business online",
-] as const;

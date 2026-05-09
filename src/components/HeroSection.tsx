@@ -56,29 +56,9 @@ export function HeroSection({ title, subtitle }: Props) {
                 Get a Quote
               </ButtonLink>
             </div>
-            <div className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-sm text-midnight/55">
-              {HERO_MICRO.map((chip) => (
-                <span
-                  key={chip}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-[0.8125rem] shadow-sm shadow-midnight/5 ring-1 ring-line"
-                >
-                  <span
-                    className="h-1.5 w-1.5 rounded-full bg-accent"
-                    aria-hidden
-                  />
-                  {chip}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-const HERO_MICRO = [
-  "Clear communication",
-  "Mobile-first layouts",
-  "SEO fundamentals included",
-] as const;
