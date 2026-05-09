@@ -18,6 +18,13 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://launchlitestudio.com";
 
 /**
+ * Public contact address — shown on the Contact page. Should match your DNS
+ * forwarding (e.g. contact@ → personal inbox). Form delivery still uses
+ * server-only CONTACT_FORM_RECIPIENT.
+ */
+export const PUBLIC_CONTACT_EMAIL = "contact@launchlitestudio.com";
+
+/**
  * Quote form notifications use server-only CONTACT_FORM_RECIPIENT (never NEXT_PUBLIC).
  */
 

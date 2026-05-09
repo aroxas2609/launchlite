@@ -5,6 +5,7 @@ import {
   BUSINESS_NAME,
   BUSINESS_REGION_NOTE,
   NAV_LINKS,
+  PUBLIC_CONTACT_EMAIL,
   SITE_URL,
 } from "@/config/site";
 
@@ -28,6 +29,13 @@ export function Footer() {
               >
                 Request a quote
               </Link>
+              <span className="text-snow/50"> · </span>
+              <a
+                href={`mailto:${PUBLIC_CONTACT_EMAIL}`}
+                className="font-medium text-snow underline-offset-4 hover:underline"
+              >
+                {PUBLIC_CONTACT_EMAIL}
+              </a>
             </p>
             <p className="mt-3 text-xs text-snow/55">{BUSINESS_REGION_NOTE}</p>
           </div>

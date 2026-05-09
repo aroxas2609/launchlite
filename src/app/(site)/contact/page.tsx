@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
-import { SITE_URL } from "@/config/site";
+import { PUBLIC_CONTACT_EMAIL, SITE_URL } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -29,6 +29,16 @@ export default function ContactPage() {
                 className="text-accent-strong underline-offset-4 hover:underline"
               >
                 {SITE_URL.replace(/^https?:\/\//, "")}
+              </a>
+            </li>
+            <li>
+              <span className="font-semibold text-midnight">Email</span>
+              <br />
+              <a
+                href={`mailto:${PUBLIC_CONTACT_EMAIL}`}
+                className="text-accent-strong underline-offset-4 hover:underline"
+              >
+                {PUBLIC_CONTACT_EMAIL}
               </a>
             </li>
           </ul>
