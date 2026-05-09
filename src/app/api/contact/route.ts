@@ -9,18 +9,42 @@ function escapeHtml(text: string) {
     .replace(/"/g, "&quot;");
 }
 
-export async function POST(request: Request) {
-  const recipient = process.env.CONTACT_FORM_RECIPIENT;
-  const from =
-    process.env.EMAIL_FROM ??
-    "LaunchLite Studio <onboarding@resend.dev>";
+/** Trim env values — Vercel paste sometimes includes stray quotes */
+function envTrim(value: string | undefined, fallback: string) {
+  const raw = (value ?? fallback).trim();
+  if (
+    (raw.startsWith('"') && raw.endsWith('"')) ||
+    (raw.startsWith("'") && raw.endsWith("'"))
+  ) {
+    return raw.slice(1, -1).trim();
+  }
+  return raw;
+}
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey || !recipient) {
+export async function POST(request: Request) {
+  const recipient = process.env.CONTACT_FORM_RECIPIENT?.trim();
+  const from = envTrim(
+    process.env.EMAIL_FROM,
+    "LaunchLite Studio <onboarding@resend.dev>"
+  );
+
+  /**
+   * Prefer LAUNCHLITE_RESEND_API_KEY — on Windows, an empty user/system
+   * RESEND_API_KEY can override .env.local (dotenv does not overwrite existing vars).
+   */
+  const apiKey =
+    process.env.LAUNCHLITE_RESEND_API_KEY?.trim() ||
+    process.env.RESEND_API_KEY?.trim();
+  const missing: string[] = [];
+  if (!apiKey) {
+    missing.push("LAUNCHLITE_RESEND_API_KEY or RESEND_API_KEY");
+  }
+  if (!recipient) missing.push("CONTACT_FORM_RECIPIENT");
+  if (missing.length > 0) {
     return NextResponse.json(
       {
         error:
-          "Contact form is not configured. Add RESEND_API_KEY and CONTACT_FORM_RECIPIENT to your environment.",
+          `Missing: ${missing.join(", ")}. Add them to .env.local in the project root, save the file, then stop and restart \`npm run dev\` (env is only read when the server starts).`,
       },
       { status: 503 }
     );
@@ -35,7 +59,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid form data." }, { status: 400 });
   }
 
-  // Honeypot — if filled, pretend success (spam)
   const trap = String(formData.get("company_website") ?? "").trim();
   if (trap.length > 0) {
     return NextResponse.json({ ok: true });
@@ -98,9 +121,25 @@ export async function POST(request: Request) {
   });
 
   if (error) {
-    console.error("[contact]", error);
+    console.error("[contact] Resend error:", error);
+    const resendMsg =
+      typeof error === "object" &&
+      error !== null &&
+      "message" in error &&
+      typeof (error as { message: unknown }).message === "string"
+        ? (error as { message: string }).message
+        : JSON.stringify(error);
+
+    /** Helpful in local dev; omitted wording on production errors */
+    const isDev = process.env.NODE_ENV === "development";
+
     return NextResponse.json(
-      { error: "Could not send message. Please try again shortly." },
+      {
+        error: isDev
+          ? `Send failed: ${resendMsg}`
+          : "Could not send message. Please try again shortly.",
+        ...(isDev ? { debug: resendMsg } : {}),
+      },
       { status: 502 }
     );
   }

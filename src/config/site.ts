@@ -14,8 +14,7 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://launchlitestudio.com";
 
 /**
- * Do not put your private inbox here — it would appear in the client bundle if imported in client components.
- * Quote notifications use server-only env CONTACT_FORM_RECIPIENT (see .env.example).
+ * Quote form notifications use server-only CONTACT_FORM_RECIPIENT (never NEXT_PUBLIC).
  */
 
 export const NAV_LINKS = [

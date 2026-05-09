@@ -33,9 +33,8 @@ export default function ContactPage() {
             </li>
           </ul>
           <p className="mt-10 rounded-2xl border border-line bg-white p-5 text-sm leading-relaxed text-slate shadow-card">
-            Use the form — I usually reply within two business days. If your
-            request is urgent, mention timing in your message and I will be
-            honest about availability.
+            Prefer the form for quotes — I usually reply within two business
+            days. If your request is urgent, mention timing in your message.
           </p>
         </div>
 

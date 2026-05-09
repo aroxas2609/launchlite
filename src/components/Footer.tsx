@@ -23,7 +23,6 @@ export function Footer() {
               >
                 Request a quote
               </Link>
-              <span className="text-snow/50"> — no cold call, just your brief.</span>
             </p>
           </div>
           <div className="md:col-span-3">
