@@ -20,6 +20,8 @@ const pageTitle = `${BUSINESS_NAME} | Affordable Websites for Small Businesses`;
 const pageDescription =
   "Australia-based boutique studio: affordable, professional websites for small businesses, tradies, local clubs, photographers and community groups. Pricing in AUD.";
 
+/** Favicon + Apple touch: `src/app/icon.png`, `src/app/apple-icon.png` (Next.js metadata files). */
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -39,18 +41,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
-  },
-  icons: {
-    /** PNG first — many browsers still skip SVG for tab icons. */
-    icon: [
-      {
-        url: "/brand/launchlite-studio-logo-mark.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-      { url: "/brand/logo-icon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/brand/launchlite-studio-logo-mark.png",
   },
 };
 
