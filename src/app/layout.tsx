@@ -22,6 +22,12 @@ const pageDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  /** Meta Business Suite → Domains → “Add a meta-tag” verification */
+  verification: {
+    other: {
+      "facebook-domain-verification": "zd6i4v2414j2obtxtubb1il3z2ejan",
+    },
+  },
   title: {
     default: pageTitle,
     template: `%s · ${BUSINESS_NAME}`,
