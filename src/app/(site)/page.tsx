@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -13,6 +14,10 @@ import { portfolioProjects } from "@/config/portfolio";
 import { pricingDisclaimer, pricingTiers } from "@/config/pricing";
 import { simpleProcessSteps } from "@/config/process";
 import { services } from "@/config/services";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const whyPoints = [
   "Premium look without the premium invoice",
