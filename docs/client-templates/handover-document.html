@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<title>Project Handover — LaunchLite Studio</title>
+<style>
+  @page { margin: 18mm 16mm; }
+  body { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10pt; line-height: 1.45; color: #0b0f14; margin: 0; padding: 14mm 16mm; background: #fff; }
+  .brand { border-bottom: 2px solid #3b82f6; padding-bottom: 12px; margin-bottom: 16px; }
+  .brand h1 { margin: 0; font-size: 18pt; font-weight: 700; }
+  .brand .tag { margin: 4px 0 0; font-size: 9pt; color: #64748b; }
+  .meta { font-size: 9.5pt; margin-bottom: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .meta span { border-bottom: 1px solid #e2e8f0; padding: 4px 0; }
+  h2 { font-size: 11pt; margin: 14px 0 8px; border-left: 3px solid #3b82f6; padding-left: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin: 8px 0 12px; }
+  table th, table td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; vertical-align: top; }
+  table th { background: #f8fafc; width: 32%; font-weight: 600; color: #334155; }
+  .tick { margin-right: 6px; }
+  ul.done { list-style: none; margin: 8px 0 0; padding: 0; }
+  ul.done li { margin-bottom: 6px; padding-left: 0; }
+  .fine { font-size: 8.5pt; color: #64748b; margin-top: 18px; border-top: 1px solid #e2e8f0; padding-top: 12px; }
+</style>
+</head>
+<body>
+<div class="brand">
+  <h1>Project handover</h1>
+  <p class="tag">LaunchLite Studio · Post-launch checklist</p>
+</div>
+
+<div class="meta">
+  <span><strong>Project / site name:</strong> _____________________________</span>
+  <span><strong>Client:</strong> _____________________________</span>
+  <span><strong>Launch date:</strong> ____ / ____ / ______</span>
+  <span><strong>Handover completed by:</strong> _____________________________</span>
+</div>
+
+<h2>1. Live environment</h2>
+<table>
+  <tr><th>Production URL</th><td>https://_______________________________</td></tr>
+  <tr><th>Staging URL (if retained)</th><td>https://_______________________________</td></tr>
+  <tr><th>Hosting provider</th><td>e.g. Vercel / Netlify / ______________</td></tr>
+  <tr><th>DNS / domain registrar</th><td>___________________________________</td></tr>
+</table>
+
+<h2>2. Access &amp; credentials</h2>
+<p class="fine" style="margin-top:0;border:0;padding:0;color:#b45309;font-size:9pt;">Store passwords in a password manager—do not email secrets in plain text.</p>
+<table>
+  <tr><th>Repository / codebase</th><td>Where code lives (e.g. GitHub org/repo): _________________</td></tr>
+  <tr><th>Hosting dashboard</th><td>Owner account email / recovery: _________________________</td></tr>
+  <tr><th>CMS / editor (if any)</th><td>URL &amp; admin path: _____________________________________</td></tr>
+  <tr><th>Analytics</th><td>Google Analytics / Search Console property ID or link: ______</td></tr>
+</table>
+
+<h2>3. Third-party services</h2>
+<table>
+  <tr><th>Forms / email delivery</th><td>e.g. Resend, Formspree: _________________________________</td></tr>
+  <tr><th>Payments (if applicable)</th><td>Stripe / PayPal account: _________________________________</td></tr>
+  <tr><th>Maps / embeds</th><td>API keys stored in: _____________________________________</td></tr>
+</table>
+
+<h2>4. Support period</h2>
+<p>Unless otherwise agreed in writing, defect fixes for launch-critical issues: <strong>____ days</strong> from go-live (scope: bugs in delivered functionality—not new features).</p>
+
+<h2>5. Client sign-off</h2>
+<ul class="done">
+  <li><span class="tick">☐</span> I confirm I have admin access to hosting and domain (or know who does).</li>
+  <li><span class="tick">☐</span> I have copies of critical credentials stored securely.</li>
+  <li><span class="tick">☐</span> I understand ongoing costs (hosting, domain renewal, email tools).</li>
+</ul>
+
+<p style="margin-top:20px; font-size:9.5pt;"><strong>Client signature:</strong> _________________________ &nbsp; <strong>Date:</strong> __________</p>
+
+<p class="fine">LaunchLite Studio · contact@launchlitestudio.com · launchlitestudio.com<br/>
+Need help after handover? Email with project name and a clear description of the issue.</p>
+</body>
+</html>

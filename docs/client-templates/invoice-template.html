@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<title>Tax Invoice — LaunchLite Studio</title>
+<style>
+  @page { margin: 16mm; }
+  body { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10pt; color: #0b0f14; margin: 0; padding: 12mm 14mm; background: #fff; }
+  .brand { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #3b82f6; padding-bottom: 14px; margin-bottom: 18px; }
+  .brand h1 { margin: 0; font-size: 20pt; font-weight: 700; }
+  .brand .sub { font-size: 9pt; color: #64748b; margin-top: 4px; }
+  .inv-meta { text-align: right; font-size: 10pt; }
+  .inv-meta strong { display: block; font-size: 8pt; color: #64748b; letter-spacing: 0.05em; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 18px; }
+  .box { border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 6px; background: #f8fafc; }
+  .box h3 { margin: 0 0 8px; font-size: 9pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; }
+  table.lines { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 10pt; }
+  table.lines th, table.lines td { border: 1px solid #e2e8f0; padding: 8px 10px; }
+  table.lines th { background: #f1f5f9; text-align: left; }
+  table.lines .r { text-align: right; }
+  .totals { max-width: 280px; margin-left: auto; font-size: 10pt; }
+  .totals tr td { padding: 4px 0; border: none; }
+  .totals tr td:last-child { text-align: right; font-weight: 600; }
+  .totals .grand { font-size: 12pt; border-top: 2px solid #0b0f14; padding-top: 8px; margin-top: 6px; }
+  .fine { font-size: 8.5pt; color: #64748b; margin-top: 16px; line-height: 1.4; }
+  .pay { margin-top: 18px; padding: 12px; background: #eff6ff; border-radius: 8px; border: 1px solid #bfdbfe; font-size: 9.5pt; }
+</style>
+</head>
+<body>
+<div class="brand">
+  <div>
+    <h1>TAX INVOICE</h1>
+    <p class="sub">LaunchLite Studio · Australia</p>
+  </div>
+  <div class="inv-meta">
+    <strong>Invoice no.</strong>
+    LL-INV-________
+    <strong style="margin-top:10px;">Date issued</strong>
+    ____ / ____ / ______
+    <strong style="margin-top:10px;">Due date</strong>
+    ____ / ____ / ______
+  </div>
+</div>
+
+<div class="grid2">
+  <div class="box">
+    <h3>From</h3>
+    <p style="margin:0;"><strong>LaunchLite Studio</strong></p>
+    <p style="margin:6px 0 0; font-size:9pt;">ABN: [Your ABN]</p>
+    <p style="margin:4px 0 0; font-size:9pt;">contact@launchlitestudio.com</p>
+    <p style="margin:4px 0 0; font-size:9pt;">launchlitestudio.com</p>
+  </div>
+  <div class="box">
+    <h3>Bill to</h3>
+    <p style="margin:0; min-height:72px;">Client legal name:<br/>_________________________________<br/>_________________________________</p>
+    <p style="margin:8px 0 0; font-size:9pt;">ABN: _________________________</p>
+  </div>
+</div>
+
+<table class="lines">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th style="width:12%;" class="r">Qty</th>
+      <th style="width:18%;" class="r">Unit (AUD)</th>
+      <th style="width:18%;" class="r">Amount (AUD)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[e.g. Website design &amp; build — milestone 1]</td>
+      <td class="r">1</td>
+      <td class="r">________</td>
+      <td class="r">________</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="r">&nbsp;</td>
+      <td class="r">&nbsp;</td>
+      <td class="r">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="r">&nbsp;</td>
+      <td class="r">&nbsp;</td>
+      <td class="r">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="totals">
+  <tr><td>Subtotal</td><td>$ __________</td></tr>
+  <tr><td>GST (10%) — if applicable</td><td>$ __________</td></tr>
+  <tr class="grand"><td>Total (AUD)</td><td>$ __________</td></tr>
+</table>
+
+<p class="fine"><strong>GST:</strong> If you are not registered for GST, remove GST line and ensure pricing wording matches your tax status. Seek advice from a registered tax agent.</p>
+
+<div class="pay">
+  <strong>Payment details</strong><br/>
+  Account name: _____________________________<br/>
+  BSB: _________ &nbsp; Account: __________________<br/>
+  Reference: Invoice LL-INV-________
+</div>
+
+<p class="fine">Thank you for your business. Questions about this invoice: contact@launchlitestudio.com</p>
+</body>
+</html>
