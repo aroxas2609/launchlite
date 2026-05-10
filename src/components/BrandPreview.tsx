@@ -44,6 +44,7 @@ export function BrandPreview() {
                   className="object-cover"
                   sizes="(max-width: 640px) 300px, 320px"
                   unoptimized
+                  priority={i < 2}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight/55 to-transparent" />
                 <p className="absolute bottom-3 left-4 max-w-[90%] truncate text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-snow shadow-sm shadow-midnight/25">

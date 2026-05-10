@@ -63,8 +63,12 @@ export default function HomePage() {
           />
           {/* TODO: Replace thumbnails + URLs in src/config/portfolio.ts */}
           <div className="mt-12 grid gap-8 lg:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+            {featuredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                priority={index === 0}
+              />
             ))}
           </div>
         </div>
