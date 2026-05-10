@@ -5,10 +5,19 @@
  * Amounts are Australian dollars (AUD). TODO: adjust tiers as packages change.
  */
 
+/** Toggle off to remove promo UI & disclaimer line; restore each tier's priceLabel and omit priceWasLabel */
+export const pricingPromotion = {
+  active: true,
+  discountAud: 300,
+  badge: "$300 off each package",
+} as const;
+
 export type PricingTier = {
   id: string;
   name: string;
   priceLabel: string;
+  /** When set while `pricingPromotion.active`, shown struck-through above `priceLabel` */
+  priceWasLabel?: string;
   description: string;
   features: string[];
   highlighted?: boolean;
@@ -16,11 +25,19 @@ export type PricingTier = {
   ctaHref: string;
 };
 
+const pricingDisclaimerBase =
+  "All amounts are in Australian dollars (AUD). Prices are starting points and may vary depending on features, content and integrations.";
+
+export const pricingDisclaimer = pricingPromotion.active
+  ? `Limited-time offer: $${pricingPromotion.discountAud} off each package. ${pricingDisclaimerBase}`
+  : pricingDisclaimerBase;
+
 export const pricingTiers: PricingTier[] = [
   {
     id: "starter",
     name: "Starter Website",
-    priceLabel: "From $599",
+    priceWasLabel: "From $599",
+    priceLabel: "From $299",
     description: "Best for one-page websites.",
     features: [
       "1 page website",
@@ -36,7 +53,8 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "business",
     name: "Business Website",
-    priceLabel: "From $999",
+    priceWasLabel: "From $999",
+    priceLabel: "From $699",
     description: "Best for small businesses that need multiple pages.",
     features: [
       "Up to 5 pages",
@@ -55,7 +73,8 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "premium",
     name: "Premium Website",
-    priceLabel: "From $1,699",
+    priceWasLabel: "From $1,699",
+    priceLabel: "From $1,399",
     description:
       "Best for polished custom websites with more sections and stronger branding.",
     features: [
@@ -72,9 +91,6 @@ export const pricingTiers: PricingTier[] = [
     ctaHref: "/contact",
   },
 ];
-
-export const pricingDisclaimer =
-  "All amounts are in Australian dollars (AUD). Prices are starting points and may vary depending on features, content and integrations.";
 
 export type SupportPlan = {
   title: string;

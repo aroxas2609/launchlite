@@ -1,4 +1,4 @@
-import type { PricingTier } from "@/config/pricing";
+import { pricingPromotion, type PricingTier } from "@/config/pricing";
 import { ButtonLink } from "@/components/ButtonLink";
 
 type Props = {
@@ -6,6 +6,9 @@ type Props = {
 };
 
 export function PricingCard({ tier }: Props) {
+  const showPromoPrice =
+    pricingPromotion.active && tier.priceWasLabel !== undefined;
+
   return (
     <article
       className={`flex h-full flex-col rounded-2xl border bg-white p-6 shadow-card sm:p-8 ${
@@ -26,10 +29,34 @@ export function PricingCard({ tier }: Props) {
       <h3 className="mt-3 font-heading text-xl font-semibold text-midnight">
         {tier.name}
       </h3>
-      <p className="mt-2 flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold tracking-tight text-midnight">
-        <span>{tier.priceLabel}</span>
-        <span className="text-xl font-semibold tracking-normal text-slate">AUD</span>
-      </p>
+      <div className="mt-2 space-y-1">
+        {showPromoPrice ? (
+          <p className="sr-only">
+            {pricingPromotion.badge}. Starting price was {tier.priceWasLabel}; promotional
+            starting price {tier.priceLabel} Australian dollars.
+          </p>
+        ) : null}
+        {showPromoPrice ? (
+          <p
+            className="text-sm font-semibold uppercase tracking-[0.12em] text-accent-strong"
+            aria-hidden
+          >
+            {pricingPromotion.badge}
+          </p>
+        ) : null}
+        <p
+          className="flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold tracking-tight text-midnight"
+          {...(showPromoPrice ? { "aria-hidden": true } : {})}
+        >
+          {showPromoPrice ? (
+            <span className="text-xl font-semibold tracking-tight text-slate line-through decoration-slate/45">
+              {tier.priceWasLabel}
+            </span>
+          ) : null}
+          <span>{tier.priceLabel}</span>
+          <span className="text-xl font-semibold tracking-normal text-slate">AUD</span>
+        </p>
+      </div>
       <p className="mt-2 text-sm leading-relaxed text-slate">{tier.description}</p>
       <ul className="mt-6 space-y-3 text-sm text-midnight/85">
         {tier.features.map((feature) => (
