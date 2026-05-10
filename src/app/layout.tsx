@@ -41,7 +41,8 @@ export const metadata: Metadata = {
     description: pageDescription,
   },
   icons: {
-    icon: "/brand/logo-icon.svg",
+    icon: "/brand/launchlite-studio-logo-mark.png",
+    apple: "/brand/launchlite-studio-logo-mark.png",
   },
 };
 

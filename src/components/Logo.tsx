@@ -48,14 +48,14 @@ export function Logo({
   if (variant === "icon") {
     content = (
       <span className="inline-flex" aria-label={label}>
-        {/* Electric mark — strong on IG / watermark */}
-        <LogoMark className={`${markSize} text-accent`} />
+        {/* Icon variant: PNG on light; SVG on dark (accent class unused for PNG). */}
+        <LogoMark className={`${markSize} text-accent`} tone={tone} />
       </span>
     );
   } else if (variant === "stacked") {
     content = (
       <span className={`inline-flex flex-col items-center gap-2 ${fg}`}>
-        <LogoMark className={markSize} />
+        <LogoMark className={markSize} tone={tone} />
         <span className="text-center leading-tight">
           <span className="block font-heading text-lg font-semibold tracking-tight">
             LaunchLite
@@ -71,7 +71,7 @@ export function Logo({
   } else {
     content = (
       <span className={`inline-flex items-center gap-2.5 sm:gap-3 ${fg}`}>
-        <LogoMark className={markSize} />
+        <LogoMark className={markSize} tone={tone} />
         <span className={`font-heading text-[1.05rem] font-semibold tracking-tight sm:text-lg`}>
           LaunchLite{" "}
           {lockup ? (
