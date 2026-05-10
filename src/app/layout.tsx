@@ -20,8 +20,6 @@ const pageTitle = `${BUSINESS_NAME} | Affordable Websites for Small Businesses`;
 const pageDescription =
   "Australia-based boutique studio: affordable, professional websites for small businesses, tradies, local clubs, photographers and community groups. Pricing in AUD.";
 
-/** Favicon + Apple touch: `src/app/icon.png`, `src/app/apple-icon.png` (Next.js metadata files). */
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -41,6 +39,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
+  },
+  /** Static files in /public — avoid `app/icon.png` (Next overwrites /favicon.ico with an auto-ICO). */
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
