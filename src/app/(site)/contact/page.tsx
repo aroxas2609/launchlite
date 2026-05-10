@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
   GOOGLE_BUSINESS_PROFILE_URL,
+  INSTAGRAM_URL,
   PUBLIC_CONTACT_EMAIL,
   SITE_URL,
 } from "@/config/site";
@@ -61,6 +62,18 @@ export default function ContactPage() {
                 </a>
               </li>
             ) : null}
+            <li>
+              <span className="font-semibold text-midnight">Instagram</span>
+              <br />
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-strong underline-offset-4 hover:underline"
+              >
+                @launchlitestudio
+              </a>
+            </li>
           </ul>
           <p className="mt-10 rounded-2xl border border-line bg-white p-5 text-sm leading-relaxed text-slate shadow-card">
             I usually reply within two business days. If timing matters—say you

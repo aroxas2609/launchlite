@@ -21,6 +21,9 @@ export const SITE_URL =
 export const GOOGLE_BUSINESS_PROFILE_URL =
   process.env.NEXT_PUBLIC_GOOGLE_BUSINESS_URL?.trim() ?? "";
 
+/** Public Instagram profile (handle @launchlitestudio). */
+export const INSTAGRAM_URL = "https://www.instagram.com/launchlitestudio/";
+
 /**
  * Public contact address — shown on the Contact page. Should match your DNS
  * forwarding (e.g. contact@ → personal inbox). Form delivery still uses

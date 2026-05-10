@@ -5,6 +5,7 @@ import {
   BUSINESS_NAME,
   BUSINESS_REGION_NOTE,
   GOOGLE_BUSINESS_PROFILE_URL,
+  INSTAGRAM_URL,
   NAV_LINKS,
   PUBLIC_CONTACT_EMAIL,
   SITE_URL,
@@ -50,6 +51,15 @@ export function Footer() {
                   </a>
                 </>
               ) : null}
+              <span className="text-snow/50"> · </span>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-snow underline-offset-4 hover:underline"
+              >
+                Instagram
+              </a>
             </p>
             <p className="mt-3 text-xs text-snow/55">{BUSINESS_REGION_NOTE}</p>
           </div>
