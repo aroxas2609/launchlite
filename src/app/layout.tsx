@@ -41,7 +41,15 @@ export const metadata: Metadata = {
     description: pageDescription,
   },
   icons: {
-    icon: "/brand/logo-icon.svg",
+    /** PNG first — many browsers still skip SVG for tab icons. */
+    icon: [
+      {
+        url: "/brand/launchlite-studio-logo-mark.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+      { url: "/brand/logo-icon.svg", type: "image/svg+xml" },
+    ],
     apple: "/brand/launchlite-studio-logo-mark.png",
   },
 };
