@@ -13,10 +13,20 @@ const PRIORITY: Record<string, number> = {
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE_URL.replace(/\/$/, "");
 
-  return NAV_LINKS.map(({ href }) => ({
+  const pages = NAV_LINKS.map(({ href }) => ({
     url: `${base}${href === "/" ? "" : href}`,
     lastModified: new Date(),
-    changeFrequency: href === "/" ? "weekly" : "monthly",
+    changeFrequency: href === "/" ? ("weekly" as const) : ("monthly" as const),
     priority: PRIORITY[href] ?? 0.7,
   }));
+
+  return [
+    ...pages,
+    {
+      url: `${base}/privacy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.35,
+    },
+  ];
 }

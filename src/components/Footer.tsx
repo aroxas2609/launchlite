@@ -88,6 +88,13 @@ export function Footer() {
         <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-snow/45 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {BUSINESS_NAME}. All rights reserved.
+            <span className="text-snow/40"> · </span>
+            <Link
+              href="/privacy"
+              className="text-snow/65 underline-offset-4 hover:text-snow hover:underline"
+            >
+              Privacy
+            </Link>
           </p>
           <p>Boutique polish—no inflated agency theatre.</p>
         </div>
