@@ -5,18 +5,21 @@
  * Amounts are Australian dollars (AUD). TODO: adjust tiers as packages change.
  */
 
-/** Toggle off to remove promo UI & disclaimer line; restore each tier's priceLabel and omit priceWasLabel */
+/** Toggle off to remove promo UI; restore each tier's priceLabel and omit priceWasLabel */
 export const pricingPromotion = {
   active: true,
   discountAud: 300,
-  badge: "$300 off each package",
+  /** Shown once above each pricing grid */
+  banner: "Limited-time offer — $300 off every package",
+  /** Shown as a small chip on each card */
+  chip: "Save $300",
 } as const;
 
 export type PricingTier = {
   id: string;
   name: string;
   priceLabel: string;
-  /** When set while `pricingPromotion.active`, shown struck-through above `priceLabel` */
+  /** Pre-promo bare amount (no "From ") shown as "Was $X" while the promo is active */
   priceWasLabel?: string;
   description: string;
   features: string[];
@@ -25,18 +28,14 @@ export type PricingTier = {
   ctaHref: string;
 };
 
-const pricingDisclaimerBase =
+export const pricingDisclaimer =
   "All amounts are in Australian dollars (AUD). Prices are starting points and may vary depending on features, content and integrations.";
-
-export const pricingDisclaimer = pricingPromotion.active
-  ? `Limited-time offer: $${pricingPromotion.discountAud} off each package. ${pricingDisclaimerBase}`
-  : pricingDisclaimerBase;
 
 export const pricingTiers: PricingTier[] = [
   {
     id: "starter",
     name: "Starter Website",
-    priceWasLabel: "From $599",
+    priceWasLabel: "$599",
     priceLabel: "From $299",
     description: "Best for one-page websites.",
     features: [
@@ -53,7 +52,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "business",
     name: "Business Website",
-    priceWasLabel: "From $999",
+    priceWasLabel: "$999",
     priceLabel: "From $699",
     description: "Best for small businesses that need multiple pages.",
     features: [
@@ -73,7 +72,7 @@ export const pricingTiers: PricingTier[] = [
   {
     id: "premium",
     name: "Premium Website",
-    priceWasLabel: "From $1,699",
+    priceWasLabel: "$1,699",
     priceLabel: "From $1,399",
     description:
       "Best for polished custom websites with more sections and stronger branding.",

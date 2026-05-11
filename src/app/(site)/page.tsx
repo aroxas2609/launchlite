@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { HeroSection } from "@/components/HeroSection";
 import { PricingCard } from "@/components/PricingCard";
+import { PricingPromoBanner } from "@/components/PricingPromoBanner";
 import { ProcessStep } from "@/components/ProcessStep";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -140,8 +141,9 @@ export default function HomePage() {
             title="Transparent starting prices."
             description="Three packages that cover common needs. If your scope is different, we will map options before any build starts."
           />
+          <PricingPromoBanner className="mt-10" />
           {/* TODO: Edit pricing in src/config/pricing.ts */}
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <div className="mt-8 grid gap-8 lg:grid-cols-3">
             {pricingTiers.map((tier) => (
               <PricingCard key={tier.id} tier={tier} />
             ))}

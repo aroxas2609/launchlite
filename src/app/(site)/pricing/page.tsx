@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { PricingCard } from "@/components/PricingCard";
+import { PricingPromoBanner } from "@/components/PricingPromoBanner";
 import { SectionHeading } from "@/components/SectionHeading";
 import { pricingDisclaimer, pricingTiers, supportPlans } from "@/config/pricing";
 import { siteFaq } from "@/config/faq";
@@ -23,7 +24,8 @@ export default function PricingPage() {
             title="Clear packages—no maze of extras."
             description="Starting points designed for solo operators and small teams. If your project needs something specific (booking tools, multilingual pages, memberships), we scope it plainly before any work begins."
           />
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          <PricingPromoBanner className="mt-10" />
+          <div className="mt-8 grid gap-8 lg:grid-cols-3">
             {/* TODO: Packages live in src/config/pricing.ts */}
             {pricingTiers.map((tier) => (
               <PricingCard key={tier.id} tier={tier} />

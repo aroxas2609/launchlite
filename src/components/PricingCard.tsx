@@ -17,42 +17,39 @@ export function PricingCard({ tier }: Props) {
           : "border-line"
       }`}
     >
-      {tier.highlighted ? (
-        <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-accent-strong">
-          Most popular
-        </p>
-      ) : (
-        <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-slate/80">
-          Package
-        </p>
-      )}
+      <div className="flex items-center justify-between gap-3">
+        {tier.highlighted ? (
+          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-accent-strong">
+            Most popular
+          </p>
+        ) : (
+          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-slate/80">
+            Package
+          </p>
+        )}
+        {showPromoPrice ? (
+          <span className="inline-flex items-center rounded-full bg-accent/10 px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-accent-strong">
+            {pricingPromotion.chip}
+          </span>
+        ) : null}
+      </div>
       <h3 className="mt-3 font-heading text-xl font-semibold text-midnight">
         {tier.name}
       </h3>
-      <div className="mt-2 space-y-1">
+      {showPromoPrice ? (
+        <p className="sr-only">
+          {pricingPromotion.chip}. Starting price was {tier.priceWasLabel}; promotional
+          starting price {tier.priceLabel} Australian dollars.
+        </p>
+      ) : null}
+      <div className="mt-2" {...(showPromoPrice ? { "aria-hidden": true } : {})}>
         {showPromoPrice ? (
-          <p className="sr-only">
-            {pricingPromotion.badge}. Starting price was {tier.priceWasLabel}; promotional
-            starting price {tier.priceLabel} Australian dollars.
+          <p className="text-sm font-medium text-slate">
+            <span>Was </span>
+            <span className="line-through decoration-slate/45">{tier.priceWasLabel}</span>
           </p>
         ) : null}
-        {showPromoPrice ? (
-          <p
-            className="text-sm font-semibold uppercase tracking-[0.12em] text-accent-strong"
-            aria-hidden
-          >
-            {pricingPromotion.badge}
-          </p>
-        ) : null}
-        <p
-          className="flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold tracking-tight text-midnight"
-          {...(showPromoPrice ? { "aria-hidden": true } : {})}
-        >
-          {showPromoPrice ? (
-            <span className="text-xl font-semibold tracking-tight text-slate line-through decoration-slate/45">
-              {tier.priceWasLabel}
-            </span>
-          ) : null}
+        <p className="flex flex-wrap items-baseline gap-x-2 text-3xl font-semibold tracking-tight text-midnight">
           <span>{tier.priceLabel}</span>
           <span className="text-xl font-semibold tracking-normal text-slate">AUD</span>
         </p>
