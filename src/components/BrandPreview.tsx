@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { portfolioProjects } from "@/config/portfolio";
+import { shouldOptimizeImages } from "@/lib/image";
 
 /** Floating SaaS-style browser cards — edit projects in portfolio config */
 
@@ -39,12 +40,12 @@ export function BrandPreview() {
               <div className="relative aspect-[16/10] bg-midnight/5">
                 <Image
                   src={project.placeholderImage}
-                  alt=""
+                  alt={`${project.name} website preview`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 300px, 320px"
-                  unoptimized
-                  priority={i < 2}
+                  unoptimized={!shouldOptimizeImages()}
+                  priority={i === 0}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight/55 to-transparent" />
                 <p className="absolute bottom-3 left-4 max-w-[90%] truncate text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-snow shadow-sm shadow-midnight/25">

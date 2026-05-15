@@ -32,6 +32,19 @@ export const INSTAGRAM_URL = "https://www.instagram.com/launchlitestudio/";
 export const PUBLIC_CONTACT_EMAIL = "contact@launchlitestudio.com";
 
 /**
+ * Suburb + state for structured data (no street published).
+ * Override suburb via NEXT_PUBLIC_BUSINESS_SUBURB if needed.
+ */
+export const BUSINESS_LOCALITY =
+  process.env.NEXT_PUBLIC_BUSINESS_SUBURB?.trim() || "Western Sydney";
+
+export const BUSINESS_STATE = "NSW";
+
+/** Optional public phone for LocalBusiness schema + visible contact areas. */
+export const PUBLIC_CONTACT_PHONE =
+  process.env.NEXT_PUBLIC_BUSINESS_PHONE?.trim() ?? "";
+
+/**
  * Quote form notifications use server-only CONTACT_FORM_RECIPIENT (never NEXT_PUBLIC).
  */
 

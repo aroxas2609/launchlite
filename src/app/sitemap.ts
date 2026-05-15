@@ -1,32 +1,71 @@
 import type { MetadataRoute } from "next";
-import { NAV_LINKS, SITE_URL } from "@/config/site";
+import { SITE_URL } from "@/config/site";
+import { industrySlugs } from "@/content/industries";
+import { locationSlugs } from "@/content/locations";
+import { programmaticServiceSlugs } from "@/content/servicesProgrammatic";
+import { listBlogSlugs } from "@/lib/blog/posts";
+import { CORE_ROUTES } from "@/lib/seo/routes";
 
-/** Priority / cadence tuned for a small marketing site (Google uses hints loosely). */
-const PRIORITY: Record<string, number> = {
-  "/": 1,
-  "/work": 0.85,
-  "/pricing": 0.85,
-  "/process": 0.8,
-  "/contact": 0.75,
+/** Small tweaks beyond registry defaults */
+const PRIORITY_OVERRIDES: Record<string, number> = {
+  "/blog": 0.74,
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function urlForPath(path: string): string {
   const base = SITE_URL.replace(/\/$/, "");
+  if (!path || path === "/") return `${base}/`;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${normalized}`;
+}
 
-  const pages = NAV_LINKS.map(({ href }) => ({
-    url: `${base}${href === "/" ? "" : href}`,
-    lastModified: new Date(),
-    changeFrequency: href === "/" ? ("weekly" as const) : ("monthly" as const),
-    priority: PRIORITY[href] ?? 0.7,
-  }));
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+  const entries: MetadataRoute.Sitemap = [];
 
-  return [
-    ...pages,
-    {
-      url: `${base}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly" as const,
-      priority: 0.35,
-    },
-  ];
+  for (const route of CORE_ROUTES) {
+    entries.push({
+      url: urlForPath(route.path),
+      lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: PRIORITY_OVERRIDES[route.path] ?? route.priority,
+    });
+  }
+
+  for (const slug of locationSlugs) {
+    entries.push({
+      url: urlForPath(`/locations/${slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.72,
+    });
+  }
+
+  for (const slug of industrySlugs) {
+    entries.push({
+      url: urlForPath(`/industries/${slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  for (const slug of programmaticServiceSlugs) {
+    entries.push({
+      url: urlForPath(`/services/${slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.73,
+    });
+  }
+
+  for (const slug of listBlogSlugs()) {
+    entries.push({
+      url: urlForPath(`/blog/${slug}`),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.62,
+    });
+  }
+
+  return entries;
 }

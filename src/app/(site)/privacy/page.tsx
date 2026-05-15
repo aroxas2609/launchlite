@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { BUSINESS_NAME, PUBLIC_CONTACT_EMAIL, SITE_URL } from "@/config/site";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Privacy",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Privacy policy",
   description:
-    "How LaunchLite Studio collects and handles personal information when you use this website and the quote form.",
-};
+    "How LaunchLite Studio collects and handles personal information on this website and the quote request form (Australia).",
+  path: "/privacy",
+  robots: { index: true, follow: true },
+});
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-gradient-to-b from-soft-blue/40 via-white to-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Privacy", href: "/privacy" },
+        ]}
+      />
+      <div className="bg-gradient-to-b from-soft-blue/40 via-white to-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <article className="mx-auto max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
           Legal
@@ -141,10 +152,18 @@ export default function PrivacyPage() {
               Cookies and tracking
             </h2>
             <p>
-              This site does not use advertising or analytics cookies by
-              default. If we add analytics or similar tools later, we will
-              update this policy and, where required, ask for your consent
-              before non-essential tracking runs.
+              LaunchLite Studio aims to keep tracking proportionate. The quote
+              request form delivers messages via email (processed by our email
+              provider). Separately, we may enable anonymised measurement on this
+              website when configured in hosting/environment variables—for
+              example Google Analytics 4 and Microsoft Clarity—primarily to
+              understand navigation patterns and improve usability.
+            </p>
+            <p>
+              Those measurement tools may set cookies or similar technologies on
+              your device when enabled. You can usually manage cookies through
+              your browser settings. If we materially expand tracking beyond what
+              is described here, we will update this page accordingly.
             </p>
           </section>
 
@@ -214,5 +233,6 @@ export default function PrivacyPage() {
         </div>
       </article>
     </div>
+    </>
   );
 }

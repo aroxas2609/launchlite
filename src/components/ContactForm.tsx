@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackEvent } from "@/lib/analytics/events";
 
 const websiteTypes = [
   "Small business website",
@@ -51,14 +52,17 @@ export function ContactForm() {
         setErrorMessage(
           data.error ?? "Something went wrong. Please try again."
         );
+        trackEvent("quote_form_submit_error", { status: res.status });
         return;
       }
 
       setStatus("success");
       form.reset();
+      trackEvent("quote_form_submit_success");
     } catch {
       setStatus("error");
       setErrorMessage("Could not reach the server. Check your connection.");
+      trackEvent("quote_form_submit_network_error");
     }
   }
 

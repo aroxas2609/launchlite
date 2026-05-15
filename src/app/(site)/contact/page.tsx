@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionHeading } from "@/components/SectionHeading";
 import {
@@ -7,16 +8,30 @@ import {
   PUBLIC_CONTACT_EMAIL,
   SITE_URL,
 } from "@/config/site";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact — request a website quote",
   description:
-    "Request a quote for an affordable website. Share your goals, budget range, and I'll recommend the simplest next step.",
-};
+    "Request a quote for an affordable Australian small-business website. Share goals, service area, budget range and timeline—get a clear next step.",
+  path: "/contact",
+  keywords: [
+    "website quote Australia",
+    "affordable web design quote",
+    "small business website enquiry",
+  ],
+});
 
 export default function ContactPage() {
   return (
-    <div className="bg-gradient-to-b from-soft-blue/40 via-white to-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Contact", href: "/contact" },
+        ]}
+      />
+      <div className="bg-gradient-to-b from-soft-blue/40 via-white to-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading
@@ -86,6 +101,7 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

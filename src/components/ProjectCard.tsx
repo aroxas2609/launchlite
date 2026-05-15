@@ -1,6 +1,7 @@
 import Image from "next/image";
-import type { PortfolioProject } from "@/config/portfolio";
 import { ButtonLink } from "@/components/ButtonLink";
+import type { PortfolioProject } from "@/config/portfolio";
+import { shouldOptimizeImages } from "@/lib/image";
 
 type Props = {
   project: PortfolioProject;
@@ -12,14 +13,13 @@ export function ProjectCard({ project, priority = false }: Props) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover">
       <div className="relative aspect-[16/10] bg-soft-blue">
-        {/* Local /public/images — unoptimized avoids stale `/_next/image` cache in dev */}
         <Image
           src={project.placeholderImage}
-          alt={`${project.name} preview`}
+          alt={`${project.name} portfolio website screenshot preview`}
           fill
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 33vw"
-          unoptimized
+          unoptimized={!shouldOptimizeImages()}
           priority={priority}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight/30 to-transparent" />
@@ -36,10 +36,19 @@ export function ProjectCard({ project, priority = false }: Props) {
         </p>
         <div className="mt-6 flex flex-1 flex-col gap-2">
           {/* TODO: Update liveUrl, caseStudyUrl in src/config/portfolio.ts */}
-          <ButtonLink href={project.liveUrl} external variant="primary">
+          <ButtonLink
+            href={project.liveUrl}
+            external
+            analyticsId="portfolio_view_live"
+            variant="primary"
+          >
             View Live Site
           </ButtonLink>
-          <ButtonLink href={project.caseStudyUrl} variant="secondary">
+          <ButtonLink
+            href={project.caseStudyUrl}
+            analyticsId="portfolio_case_study_click"
+            variant="secondary"
+          >
             View Case Study
           </ButtonLink>
         </div>

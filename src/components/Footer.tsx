@@ -10,6 +10,7 @@ import {
   PUBLIC_CONTACT_EMAIL,
   SITE_URL,
 } from "@/config/site";
+import { exploreFooterLinks } from "@/lib/seo/internalLinks";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -63,7 +64,7 @@ export function Footer() {
             </p>
             <p className="mt-3 text-xs text-snow/55">{BUSINESS_REGION_NOTE}</p>
           </div>
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <p className="text-sm font-semibold text-snow">Navigate</p>
             <ul className="mt-4 space-y-2 text-sm text-snow/70">
               {NAV_LINKS.map((link) => (
@@ -75,7 +76,19 @@ export function Footer() {
               ))}
             </ul>
           </div>
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
+            <p className="text-sm font-semibold text-snow">Explore</p>
+            <ul className="mt-4 space-y-2 text-sm text-snow/70">
+              {exploreFooterLinks().map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-snow">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-2">
             <p className="text-sm font-semibold text-snow">Focus</p>
             <p className="mt-4 text-sm leading-relaxed text-snow/65">
               Boutique web studio—simple websites and MVP-style builds with

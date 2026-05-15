@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@/components/Analytics";
+import { JsonLd } from "@/components/JsonLd";
 import { BUSINESS_NAME, SITE_URL } from "@/config/site";
+import { siteWideGraphEntities } from "@/lib/seo/schema";
 
 const soraDisplay = Sora({
   subsets: ["latin"],
@@ -15,15 +18,17 @@ const interBody = Inter({
   display: "swap",
 });
 
-/** TODO (SEO): keep in sync when you change tagline or positioning */
 const pageTitle = `${BUSINESS_NAME} | Affordable Websites for Small Businesses`;
 const pageDescription =
-  "Australia-based boutique studio: affordable, professional websites for small businesses, tradies, local clubs, photographers and community groups. Pricing in AUD.";
+  "Australia-based web studio for affordable business websites: tradies, gyms, clubs, photographers & local services. Clear AUD pricing, mobile-first builds, SEO-ready foundations.";
+
+const googleSiteVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() ?? "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  /** Meta Business Suite → Domains → “Add a meta-tag” verification */
   verification: {
+    ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
     other: {
       "facebook-domain-verification": "zd6i4v2414j2obtxtubb1il3z2ejan",
     },
@@ -40,11 +45,20 @@ export const metadata: Metadata = {
     siteName: BUSINESS_NAME,
     title: pageTitle,
     description: pageDescription,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${BUSINESS_NAME} — affordable Australian small business websites`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: pageTitle,
     description: pageDescription,
+    images: ["/opengraph-image"],
   },
   /** Static files in /public — avoid `app/icon.png` (Next overwrites /favicon.ico with an auto-ICO). */
   icons: {
@@ -60,11 +74,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-AU"
       data-scroll-behavior="smooth"
       className={`${soraDisplay.variable} ${interBody.variable} h-full scroll-smooth`}
     >
       <body className="flex min-h-dvh flex-col bg-snow text-midnight antialiased">
+        <Analytics />
+        <JsonLd data={siteWideGraphEntities()} />
         {children}
       </body>
     </html>

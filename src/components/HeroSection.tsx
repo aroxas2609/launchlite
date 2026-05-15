@@ -45,12 +45,13 @@ export function HeroSection({ title, subtitle }: Props) {
               {subtitle}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ButtonLink href="/work" className="px-8 py-3.5 text-base">
+              <ButtonLink href="/work" analyticsId="hero_view_work" className="px-8 py-3.5 text-base">
                 View My Work
               </ButtonLink>
               <ButtonLink
                 href="/contact"
                 variant="secondary"
+                analyticsId="hero_get_quote"
                 className="px-8 py-3.5 text-base"
               >
                 Get a Quote

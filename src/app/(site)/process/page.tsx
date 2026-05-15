@@ -1,18 +1,33 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { ProcessStep } from "@/components/ProcessStep";
 import { SectionHeading } from "@/components/SectionHeading";
 import { processPhases } from "@/config/process";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Process",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Our process — discovery to launch",
   description:
-    "Discovery through launch—in plain English—so you always know what is happening next.",
-};
+    "Plain-English web design process: discovery, structure, build, review and launch—with clear checkpoints and realistic timelines.",
+  path: "/process",
+  keywords: [
+    "website design process",
+    "small business website timeline",
+    "web design workflow Australia",
+  ],
+});
 
 export default function ProcessPage() {
   return (
-    <div className="bg-gradient-to-b from-soft-blue/30 via-white to-white">
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Process", href: "/process" },
+        ]}
+      />
+      <div className="bg-gradient-to-b from-soft-blue/30 via-white to-white">
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <SectionHeading
           as="h1"
@@ -55,5 +70,6 @@ export default function ProcessPage() {
         />
       </section>
     </div>
+    </>
   );
 }

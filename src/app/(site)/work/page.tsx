@@ -1,18 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
 import { SectionHeading } from "@/components/SectionHeading";
 import { portfolioProjects } from "@/config/portfolio";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { shouldOptimizeImages } from "@/lib/image";
 
-export const metadata: Metadata = {
-  title: "Work",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Portfolio — websites for clubs, tradies & creatives",
   description:
-    "Selected websites and case studies for community groups, local trades, and creative businesses.",
-};
+    "Selected launches: community clubs, local trades and portfolio sites—mobile-first layouts, clear enquiries and modern performance.",
+  path: "/work",
+  keywords: [
+    "web design portfolio Australia",
+    "tradie website examples",
+    "club website design",
+  ],
+});
 
 export default function WorkPage() {
   return (
-    <div className="bg-gradient-to-b from-soft-blue/40 via-white to-white">
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Work", href: "/work" },
+        ]}
+      />
+      <div className="bg-gradient-to-b from-soft-blue/40 via-white to-white">
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <SectionHeading
           as="h1"
@@ -35,11 +51,11 @@ export default function WorkPage() {
                 <div className="relative aspect-[16/10] w-full min-h-[200px]">
                   <Image
                     src={project.placeholderImage}
-                    alt={`${project.name} — site preview`}
+                    alt={`${project.name} — full portfolio website preview`}
                     fill
                     className="object-contain object-top p-1 sm:p-2"
                     sizes="(max-width: 1200px) 100vw, 1100px"
-                    unoptimized
+                    unoptimized={!shouldOptimizeImages()}
                     priority={index === 0}
                   />
                 </div>
@@ -98,5 +114,6 @@ export default function WorkPage() {
         ))}
       </section>
     </div>
+    </>
   );
 }

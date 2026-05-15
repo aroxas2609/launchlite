@@ -1,21 +1,40 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { JsonLd } from "@/components/JsonLd";
 import { PricingCard } from "@/components/PricingCard";
 import { PricingPromoBanner } from "@/components/PricingPromoBanner";
 import { SectionHeading } from "@/components/SectionHeading";
+import { TrustBar } from "@/components/TrustBar";
 import { pricingDisclaimer, pricingTiers, supportPlans } from "@/config/pricing";
 import { siteFaq } from "@/config/faq";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { faqPageSchema } from "@/lib/seo/schema";
 
-export const metadata: Metadata = {
-  title: "Pricing",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Pricing — affordable website packages (AUD)",
   description:
-    "Straightforward AUD pricing for Australian small businesses, clubs, creatives, and local services—with optional ongoing support.",
-};
+    "Transparent AUD website packages for Australian small businesses, clubs and creatives—starting points, optional support, no maze of extras.",
+  path: "/pricing",
+  keywords: [
+    "website pricing Australia",
+    "affordable website cost AUD",
+    "small business website packages",
+  ],
+});
 
 export default function PricingPage() {
   return (
-    <div className="bg-snow">
+    <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Pricing", href: "/pricing" },
+        ]}
+      />
+      <div className="bg-snow">
+      <JsonLd data={faqPageSchema(siteFaq)} />
       <section className="border-b border-line bg-gradient-to-br from-soft-blue/55 via-white to-white px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
@@ -60,6 +79,10 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6 lg:px-8 lg:pb-8">
+        <TrustBar />
+      </section>
+
       <section className="bg-gradient-to-b from-white to-soft-blue/40 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-3xl">
           <SectionHeading
@@ -84,5 +107,6 @@ export default function PricingPage() {
         />
       </section>
     </div>
+    </>
   );
 }

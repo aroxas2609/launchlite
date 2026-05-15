@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Service } from "@/config/services";
 
 const accentStyles: Record<Service["accent"], string> = {
@@ -33,6 +34,16 @@ export function ServiceCard({ service }: Props) {
           <p className="mt-2 text-sm leading-relaxed text-slate">
             {service.description}
           </p>
+          {service.slug ? (
+            <p className="mt-4">
+              <Link
+                href={`/services/${service.slug}`}
+                className="text-sm font-semibold text-accent-strong underline-offset-4 hover:underline"
+              >
+                Learn more
+              </Link>
+            </p>
+          ) : null}
         </div>
       </div>
     </article>

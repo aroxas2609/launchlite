@@ -20,6 +20,7 @@ type Props = {
   variant?: Variant;
   className?: string;
   external?: boolean;
+  analyticsId?: string;
 };
 
 export function ButtonLink({
@@ -28,6 +29,7 @@ export function ButtonLink({
   variant = "primary",
   className = "",
   external,
+  analyticsId,
 }: Props) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition";
@@ -36,6 +38,8 @@ export function ButtonLink({
     external ??
     (href.startsWith("http://") || href.startsWith("https://"));
 
+  const trackingProps = analyticsId ? { "data-analytics": analyticsId } : {};
+
   if (isExternal) {
     return (
       <a
@@ -43,6 +47,7 @@ export function ButtonLink({
         className={`${base} ${variants[variant]} ${className}`}
         target="_blank"
         rel="noopener noreferrer"
+        {...trackingProps}
       >
         {children}
       </a>
@@ -53,6 +58,7 @@ export function ButtonLink({
     <Link
       href={href}
       className={`${base} ${variants[variant]} ${className}`}
+      {...trackingProps}
     >
       {children}
     </Link>

@@ -3,22 +3,38 @@ import { CTASection } from "@/components/CTASection";
 import { ContactForm } from "@/components/ContactForm";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { HeroSection } from "@/components/HeroSection";
+import { JsonLd } from "@/components/JsonLd";
 import { PricingCard } from "@/components/PricingCard";
 import { PricingPromoBanner } from "@/components/PricingPromoBanner";
 import { ProcessStep } from "@/components/ProcessStep";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ServiceCard } from "@/components/ServiceCard";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { TrustBar } from "@/components/TrustBar";
 import { MAIN_TAGLINE } from "@/config/brand";
 import { siteFaq } from "@/config/faq";
 import { portfolioProjects } from "@/config/portfolio";
 import { pricingDisclaimer, pricingTiers } from "@/config/pricing";
 import { simpleProcessSteps } from "@/config/process";
 import { services } from "@/config/services";
+import { testimonials } from "@/config/testimonials";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { faqPageSchema } from "@/lib/seo/schema";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "Affordable websites for Australian small businesses",
+  description:
+    "LaunchLite Studio builds modern, mobile-first websites for tradies, clubs, gyms, photographers and local businesses—clear scope, AUD pricing, and SEO-ready foundations.",
+  path: "/",
+  keywords: [
+    "affordable website Australia",
+    "small business website",
+    "tradie website",
+    "Western Sydney web design",
+    "local business website",
+  ],
+});
 
 const whyPoints = [
   "Premium look without the premium invoice",
@@ -34,6 +50,7 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={faqPageSchema(siteFaq)} />
       <HeroSection
         title={MAIN_TAGLINE}
         subtitle="LaunchLite Studio is Australia-based and builds clean, modern websites for tradies, local businesses, clubs and creators—straightforward scope, realistic timelines, and premium polish without the big-agency invoice."
@@ -106,6 +123,12 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
+
+      <TestimonialsSection items={testimonials} />
+
+      <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
+        <TrustBar />
+      </div>
 
       <section
         id="process"
